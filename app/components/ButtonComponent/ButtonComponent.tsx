@@ -1,8 +1,9 @@
 import React from 'react'
 import './ButtonComponent.css'
+
 type Props = {
   text?: string
-  href?: () => void
+  onClick?: () => void
   id?: string
   className?: string
   disabled?: boolean
@@ -10,16 +11,25 @@ type Props = {
   style?: React.CSSProperties
 }
 
-export const ButtonComponent = (props: Props) => {
+export const ButtonComponent: React.FC<Props> = ({
+  text = 'Click me',
+  onClick,
+  id,
+  className = '',
+  disabled = false,
+  type = 'button',
+  style,
+}) => {
   return (
-    <a
-      className={`button-component ${props.className}`} 
-      ref={props.href} 
-      id={props.id} 
-      style={props.style} 
-      type={props.type}
+    <button
+      className={`button-component ${className}`}
+      onClick={onClick}
+      id={id}
+      style={style}
+      type={type}
+      disabled={disabled}
     >
-      {props.text}
-    </a>
+      {text}
+    </button>
   )
 }

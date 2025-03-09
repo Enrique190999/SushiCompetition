@@ -10,7 +10,7 @@
 .parent-homepage > p{
   font-size: 0.8rem;
   font-style: italic;
-  color: var(--color-text-primary);
+  /*color: var(--color-text-primary);*/ 
   margin: 1rem;
 }
 
