@@ -1,35 +1,32 @@
 import React from 'react'
 import './ButtonComponent.css'
+import { Link } from 'react-router'
 
 type Props = {
   text?: string
-  onClick?: () => void
+  href: string
   id?: string
   className?: string
-  disabled?: boolean
-  type?: 'button' | 'submit' | 'reset'
   style?: React.CSSProperties
+  type: 'button' | 'submit' | 'reset'
 }
 
 export const ButtonComponent: React.FC<Props> = ({
-  text = 'Click me',
-  onClick,
+  text,
+  href,
   id,
   className = '',
-  disabled = false,
   type = 'button',
   style,
 }) => {
   return (
-    <button
+    <Link
       className={`button-component ${className}`}
-      onClick={onClick}
       id={id}
       style={style}
       type={type}
-      disabled={disabled}
-    >
+      to={href}>
       {text}
-    </button>
+    </Link>
   )
 }
