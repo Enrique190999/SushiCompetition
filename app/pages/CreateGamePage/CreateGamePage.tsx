@@ -4,26 +4,37 @@ import ButtonComponent from '~/components/ButtonComponent'
 import TextBoxComponent from '~/components/TextBoxComponent'
 import ModalComponent from '~/components/ModalComponent'
 import { realtimePlayers } from '~/api/Functions/realtimePlayers'
+import SpinnerComponent from '~/components/SpinnerComponent'
 
 export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
   const [players, setPlayers] = React.useState<string[]>([])
   const addPlayer = (player: string) => { setPlayers([...players, player]) }
   const [playerName, setPlayerName] = React.useState('')
-  const [ShowModal,setShowModal] = React.useState(false)
+  const [ShowModal, setShowModal] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
 
   useEffect(() => {
     if (!gameId) return
-    const suscribePlayers = realtimePlayers(gameId,setPlayers)
+    const suscribePlayers = realtimePlayers(gameId, setPlayers)
     return () => suscribePlayers()
   }, [gameId])
+
   const startGame = () => {
-    if (playerName.trim().length === 0) {
-      setShowModal(true);
-      return;
+    try {
+      setIsLoading(true);
+      if (playerName.trim().length === 0) {
+        setShowModal(true);
+        return;
+      }
+
+    } catch (error) {
+      console.error(error)
+    } finally {
+      console.log("Juego iniciado con:", playerName);
+      setIsLoading(false);
     }
 
-    console.log("Juego iniciado con:", playerName);
-  };
+};
 
   return (
     <div className='parent-creategame'>
@@ -42,6 +53,7 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
         onClose={() => setShowModal(false)}
         message="Debes introducir un nombre antes de empezar."
       />
+      <SpinnerComponent isLoading={isLoading} />
     </div>
   )
 }
