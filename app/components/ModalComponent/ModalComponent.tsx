@@ -1,9 +1,21 @@
-import React from 'react'
-import './ModalComponent.css'
-type Props = {}
+import React from "react";
+import "./ModalComponent.css";
 
-export const ModalComponent = (props: Props) => {
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+  message: string;
+};
+
+export const ModalComponent: React.FC<Props> = ({ isOpen, onClose, message }) => {
+  if (!isOpen) return null;
+
   return (
-    <div>ModalComponent</div>
-  )
-}
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <p>{message}</p>
+        <button className="modal-button" onClick={onClose}>Aceptar</button>
+      </div>
+    </div>
+  );
+};

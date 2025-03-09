@@ -22,6 +22,7 @@ export const createAGameFunction = async () => {
     code: codigo,
     date: formattedDate,
     status: "playing",
+    admin: "",
     players:[]
   });
   console.log(`Partida creada con código: ${codigo}`);
