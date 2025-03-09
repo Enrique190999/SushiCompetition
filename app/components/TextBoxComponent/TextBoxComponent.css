@@ -1,0 +1,20 @@
+.textbox-component {
+    border: 1px solid #ff0000;
+    margin: 0.6rem;
+    padding: 0.4rem;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+    touch-action: manipulation;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    outline: none; 
+}
+
+.textbox-component:focus {
+    border-color: #ff0000;
+    box-shadow: 0 3px 6px rgba(255, 0, 0, 0.3);
+}

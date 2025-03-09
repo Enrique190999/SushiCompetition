@@ -3,6 +3,7 @@ import './ButtonComponent.css'
 import { Link } from 'react-router'
 
 type Props = {
+  handlerClick?: () => void,
   text?: string
   href: string
   id?: string
@@ -18,6 +19,7 @@ export const ButtonComponent: React.FC<Props> = ({
   className = '',
   type = 'button',
   style,
+  handlerClick = () => { }
 }) => {
   return (
     <Link
@@ -25,7 +27,8 @@ export const ButtonComponent: React.FC<Props> = ({
       id={id}
       style={style}
       type={type}
-      to={href}>
+      to={href}
+      onClick={handlerClick}>
       {text}
     </Link>
   )
