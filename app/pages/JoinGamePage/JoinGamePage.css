@@ -1,0 +1,20 @@
+.parent-joingame{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.parent-joingame h1{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.parent-joingame h2{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 1rem;
+}

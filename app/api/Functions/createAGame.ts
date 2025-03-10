@@ -21,7 +21,7 @@ export const createAGameFunction = async () => {
   await setDoc(partidaRef, {
     code: codigo,
     date: formattedDate,
-    status: "playing",
+    status: "waiting",
     admin: "",
     players:[]
   });

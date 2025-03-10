@@ -1,0 +1,20 @@
+.input-join {
+    flex: 1;
+    max-width: 50px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 0 0.2rem 0 0.2rem;
+}
+
+.parent-inputjoin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    width: 90%;
+    max-width: 400px;
+}

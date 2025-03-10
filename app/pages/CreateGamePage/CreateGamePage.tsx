@@ -5,6 +5,7 @@ import TextBoxComponent from '~/components/TextBoxComponent'
 import ModalComponent from '~/components/ModalComponent'
 import { realtimePlayers } from '~/api/Functions/realtimePlayers'
 import SpinnerComponent from '~/components/SpinnerComponent'
+import { useNavigate } from 'react-router'
 
 export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
   const [players, setPlayers] = React.useState<string[]>([])
@@ -12,7 +13,8 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
   const [playerName, setPlayerName] = React.useState('')
   const [ShowModal, setShowModal] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     if (!gameId) return
     const suscribePlayers = realtimePlayers(gameId, setPlayers)
@@ -26,7 +28,8 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
         setShowModal(true);
         return;
       }
-
+      navigate(`/game/${gameId}/${playerName}`);
+      
     } catch (error) {
       console.error(error)
     } finally {

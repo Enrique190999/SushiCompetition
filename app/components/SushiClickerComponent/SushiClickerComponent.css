@@ -1,0 +1,57 @@
+.sushiclicker {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px; /* Bordes redondeados */
+    transition: transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Efecto al hacer clic (como si se presionara) */
+.sushiclicker:active {
+    transform: scale(0.95); /* Se encoge un poco */
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra interna para efecto de pulsación */
+}
+
+/* Estilo de la imagen dentro */
+.sushiclicker img {
+    width: 100%;
+    transition: transform 0.1s ease-in-out;
+}
+
+/* Cuando se presiona, la imagen también se reduce */
+.sushiclicker:active img {
+    transform: scale(0.9);
+}
+
+/* Efecto hover para que se vea más interactivo */
+.sushiclicker:hover {
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Pequeña iluminación */
+}
+
+/* Animación de "+1" */
+.click-animation {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeUp 1s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
