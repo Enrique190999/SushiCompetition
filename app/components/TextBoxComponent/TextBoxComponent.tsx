@@ -11,24 +11,20 @@ type Props = {
   type?: "text" | "password" | "email" | "number";
 };
 
-export const TextBoxComponent: React.FC<Props> = ({
-  value,
-  onChange,
-  placeholder = "",
-  id,
-  className = "",
-  style,
-  type = "text",
-}) => {
-  return (
-    <input
-      type={type}
-      id={id}
-      className={`textbox-component ${className}`}
-      style={style}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-    />
-  );
-};
+// Convertimos el componente en un ForwardRefComponent
+export const TextBoxComponent = React.forwardRef<HTMLInputElement, Props>(
+  ({ value, onChange, placeholder = "", id, className = "", style, type = "text" }, ref) => {
+    return (
+      <input
+        ref={ref}
+        type={type}
+        id={id}
+        className={`textbox-component ${className}`}
+        style={style}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
+    );
+  }
+);

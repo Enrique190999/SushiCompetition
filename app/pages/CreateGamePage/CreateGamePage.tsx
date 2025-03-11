@@ -7,6 +7,7 @@ import { realtimePlayers } from '~/api/Functions/realtimePlayers'
 import SpinnerComponent from '~/components/SpinnerComponent'
 import { useNavigate } from 'react-router'
 
+
 export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
   const [players, setPlayers] = React.useState<string[]>([])
   const addPlayer = (player: string) => { setPlayers([...players, player]) }
@@ -25,9 +26,11 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
     try {
       setIsLoading(true);
       if (playerName.trim().length === 0) {
+        console.log("estoy nulo")
         setShowModal(true);
         return;
       }
+      console.log(`/game/${gameId}/${playerName}`)
       navigate(`/game/${gameId}/${playerName}`);
       
     } catch (error) {
