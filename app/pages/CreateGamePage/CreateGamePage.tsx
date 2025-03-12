@@ -6,9 +6,10 @@ import ModalComponent from '~/components/ModalComponent'
 import { realtimePlayers } from '~/api/Functions/realtimePlayers'
 import SpinnerComponent from '~/components/SpinnerComponent'
 import { useNavigate } from 'react-router'
+import { startGameFunction } from '~/api/Functions/startGame'
 
 
-export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
+export const CreateGamePage = ({ gameId }: { gameId: string }) => {
   const [players, setPlayers] = React.useState<string[]>([])
   const addPlayer = (player: string) => { setPlayers([...players, player]) }
   const [playerName, setPlayerName] = React.useState('')
@@ -22,7 +23,7 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
     return () => suscribePlayers()
   }, [gameId])
 
-  const startGame = () => {
+  const startGame = async () => {
     try {
       setIsLoading(true);
       if (playerName.trim().length === 0) {
@@ -30,6 +31,7 @@ export const CreateGamePage = ({ gameId }: { gameId?: string }) => {
         setShowModal(true);
         return;
       }
+      await startGameFunction(gameId,playerName)
       console.log(`/game/${gameId}/${playerName}`)
       navigate(`/game/${gameId}/${playerName}`);
       

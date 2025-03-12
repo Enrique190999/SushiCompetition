@@ -1,7 +1,7 @@
 import { db } from "../Firestore/initializeapp";
 import { doc, updateDoc } from "firebase/firestore";
 
-export async function startGame(id: string, creator: string) {
+export async function startGameFunction(id: string, creator: string) {
     try {
         const gameRef = doc(db, "games", id);
 
