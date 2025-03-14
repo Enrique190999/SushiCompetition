@@ -1,9 +1,12 @@
 import React from 'react'
 import './GameStatisticsPage.css'
-type Props = {}
+import GameStatisticsComponent from '~/components/GameStatisticsComponent'
+type Props = {
+    idGame:string
+}
 
-export const GameStatisticsPage = (props: Props) => {
+export const GameStatisticsPage = ({idGame}: Props) => {
   return (
-    <div>GameStatisticsPage</div>
+    <GameStatisticsComponent idGame={idGame}/>
   )
 }

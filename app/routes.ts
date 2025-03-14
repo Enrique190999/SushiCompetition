@@ -4,5 +4,6 @@ export default [
     index("routes/home.tsx"),
     route("create/:id","routes/create.tsx"),
     route("game/:id/:username","routes/ingame.tsx"),
-    route("join","routes/join.tsx")
+    route("join","routes/join.tsx"),
+    route("ranking/:id","routes/ranking.tsx")
 ] satisfies RouteConfig;

@@ -10,9 +10,6 @@ export function meta({ }: Route.MetaArgs) {
   ];
 }
 
-export default function Create() {
-
-  const { id, username } = useParams();
-  
+export default function Create() {  
   return <JoinGamePage/>;
 }
