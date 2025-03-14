@@ -11,6 +11,7 @@ export async function joinToGame(id: string, player: string) {
         }
         
         const gameData = gameSnapshot.data();
+        const eat = gameData.eat || [];
         const players = gameData.players || []; 
         const status = gameData.status || "pending"; // Si no existe status, se asume "pending"
 
@@ -26,6 +27,7 @@ export async function joinToGame(id: string, player: string) {
 
         await updateDoc(gameRef, {
             players: [...players, player],
+            eat:[...eat,"0<0<0<0"]
         });
 
         console.log(`Juego con ID: ${id}, Jugador añadido: ${player}`);
@@ -35,3 +37,4 @@ export async function joinToGame(id: string, player: string) {
         return { error: "Error al unirse al juego", message: undefined };
     }
 }
+

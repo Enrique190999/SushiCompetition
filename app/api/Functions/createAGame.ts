@@ -1,5 +1,6 @@
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../Firestore/initializeapp";
+import type { M } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 
 const generarCodigoPartida = () => {
   const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -23,7 +24,8 @@ export const createAGameFunction = async () => {
     date: formattedDate,
     status: "waiting",
     admin: "",
-    players:[]
+    players: [],
+    eat: []
   });
   console.log(`Partida creada con código: ${codigo}`);
   return codigo;

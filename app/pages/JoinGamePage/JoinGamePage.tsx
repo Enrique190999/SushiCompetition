@@ -7,7 +7,8 @@ import ModalComponent from '~/components/ModalComponent';
 import { checkGameExists } from '~/api/Functions/checkGame';
 import { joinToGame } from '~/api/Functions/joinToGame';
 import { useNavigate } from 'react-router';
-import TextBoxComponent  from '~/components/TextBoxComponent';
+import TextBoxComponent from '~/components/TextBoxComponent';
+import { isGameWaiting } from '~/api/Functions/checkStatusGame';
 
 type Props = {};
 
@@ -34,16 +35,15 @@ export const JoinGamePage = (props: Props) => {
                 return;
             }
 
-            // ✅ Ahora capturamos correctamente el username antes de unirse
             const joinGameCompTSX = async () => {
                 const inputValue = textBoxRef.current?.value || "";
                 console.log("Usuario introducido:", inputValue);
                 setUsername(inputValue);
 
-                // Esperar a que el estado se actualice correctamente
                 const finalUsername = inputValue.toUpperCase();
 
                 const resJoin = await joinToGame(code, finalUsername);
+
                 console.log(resJoin);
 
                 if (resJoin && resJoin.error) {
@@ -55,11 +55,18 @@ export const JoinGamePage = (props: Props) => {
 
                 if (resJoin && resJoin.message) {
                     navigate(`/game/${code}/${finalUsername}`);
+
                 }
             };
 
+            const canPlayGame = await isGameWaiting(code)
+            if (!canPlayGame) {
+                setContent(<p>La partida a la que intentas conectarte ya se encuentra en curso o ha sido finalizada</p>);
+                setShowClose(true);
+                setShowModal(true);
+                return;
+            }
             if (data && data.message) {
-                console.log(data, 'estoy en existe');
                 setShowClose(false);
                 setContent(
                     <div>

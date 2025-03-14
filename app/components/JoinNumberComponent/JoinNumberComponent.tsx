@@ -15,7 +15,7 @@ export const JoinNumberComponent: React.FC<Props> = ({ value = "", onChange, id,
 
   const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
     const newOtp = otp.split("");
-    newOtp[index] = event.target.value.slice(-1); // Solo un carácter por input
+    newOtp[index] = event.target.value.slice(-1).toUpperCase(); 
     const updatedOtp = newOtp.join("");
     setOtp(updatedOtp);
 

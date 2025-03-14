@@ -1,0 +1,1 @@
+export type Sushi = 'nigiri' | 'maki' | 'gyoza' | 'fried';
