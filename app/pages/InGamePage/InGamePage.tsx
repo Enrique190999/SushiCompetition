@@ -83,9 +83,9 @@ export const InGamePage = (props: Props) => {
             </div>
 
             {/* Mostrar botón solo si el jugador es administrador */}
-            {isAdminPlayer && (
+            
                 <ButtonComponent href="#" handlerClick={finishGame} type='button' text='TERMINAR PARTIDA' />
-            )}
+            
 
             <ButtonComponent href="#" handlerClick={toggleStatistics} type='button' text='VER ESTADISTICAS' />
 
